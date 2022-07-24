@@ -4129,6 +4129,13 @@ anymatch@^3.0.0, anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+apisauce@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-2.1.5.tgz#546229f8f145711b3b022065afb0f43bd304ecb3"
+  integrity sha512-bkMlz0ZUnyS8vDigej9UBYo5dne9/bQrkgIiIkGaiDHF6e5OxhYRLJDYu65V/Ox86tmWVwepIntAoTmk4Db0Hg==
+  dependencies:
+    axios "^0.21.4"
+
 app-root-dir@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/app-root-dir/-/app-root-dir-1.0.2.tgz#38187ec2dea7577fff033ffcb12172692ff6e118"
@@ -4396,6 +4403,13 @@ axe-core@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.3.tgz#11c74d23d5013c0fa5d183796729bc3482bd2f6f"
   integrity sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==
+
+axios@^0.21.4:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+  dependencies:
+    follow-redirects "^1.14.0"
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -7251,7 +7265,7 @@ focus-lock@^0.8.0:
   dependencies:
     tslib "^1.9.3"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
   integrity sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==

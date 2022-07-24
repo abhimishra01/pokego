@@ -67,7 +67,7 @@ PokeCard.propTypes = {
 PokeCard.defaultProps = {
   id: 1,
   src: SAMPLE_POKEMON_URL,
-  name: SAMPLE_POKEMON_URL,
+  name: "Bulbasaur",
   type: POKEMON_TYPES.GRASS,
   backgroundColor: colors.primaryGray,
 };

@@ -8,7 +8,8 @@ const apiClient = create({
 
 const { ALL_POKEMONS, POKEMON_BY_NAME } = apiRoutes;
 
-export const getAllPokemons = async () => await apiClient.get(ALL_POKEMONS);
+export const getAllPokemons = async (limit, offset) =>
+  await apiClient.get(ALL_POKEMONS(limit, offset));
 
 export const fetchPokemonsByName = async (name) =>
   await apiClient.get(POKEMON_BY_NAME(name));

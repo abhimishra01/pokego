@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+
 import { colors } from "utils/themes/colors";
 
 const Container = styled.div`

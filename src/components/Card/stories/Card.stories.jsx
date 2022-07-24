@@ -1,4 +1,5 @@
 import React from "react";
+
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
 import { colors } from "utils/themes/colors";
 

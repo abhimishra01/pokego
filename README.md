@@ -16,7 +16,7 @@ Visit the site and find out amazing and new informations about various Pokemons
 
 ## TODO:-
 
-[] Lazy Loading
-[] State Management
-[] Bookmarks
-[] Authentication
+- [] Lazy Loading
+- [] State Management
+- [] Bookmarks
+- [] Authentication

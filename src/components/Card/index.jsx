@@ -10,6 +10,7 @@ const StyledCard = styled(Card)`
   && {
     border-radius: 1rem;
     background-color: ${(props) => props.bgcolor};
+    box-shadow: 0.31rem 0.31rem 0.5rem ${colors.boxShadow};
     &.ant-card .ant-card-body {
       display: flex;
       flex-direction: column;

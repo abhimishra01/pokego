@@ -5,6 +5,7 @@ export const colors = {
   primaryRed: "#f19686",
   secondaryRed: "#d14d36",
   primaryGray: "#808080",
+  boxShadow: "#888888",
   secondaryGray: "#393E46",
   // colors based on pokemon types
   electric: "#ebb813",

@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { isEmpty } from "lodash";
 import styled from "styled-components";
+import { Col, Row } from "antd";
+import InfiniteScroll from "react-infinite-scroller";
 
 import { PokeCard } from "components/Card";
 import { getAllPokemons, fetchPokemonsByName } from "services/pokeApi";
-import { Col, Row } from "antd";
+
+import { getPokeCardColorByType } from "./dashboardUtil";
 
 const Grid = styled(Row)`
   && {
@@ -25,75 +28,83 @@ const StyledCol = styled(Col)`
 `;
 
 export const Dashboard = () => {
-  const [response, setResponse] = useState({});
   const [individualData, setIndividualData] = useState([]);
-  const [nextApiUrl, setNextApiUrl] = useState("");
+  //   const [response, setResponse] = useState({});
+  //   const [nextApiUrl, setNextApiUrl] = useState("");
+  let offset = 0;
+  const limit = 20;
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchPokemons = useCallback(async () => {
+    const apiResponse = await getAllPokemons(limit, offset);
+    if (!isEmpty(apiResponse)) {
+      const pokemonArray = apiResponse.data.results;
+      pokemonArray.forEach(async (pokemonInfo) => {
+        const response = await fetchPokemonsByName(pokemonInfo.name);
+        if (!isEmpty(response)) {
+          setIndividualData((individualData) => [
+            ...individualData,
+            response.data,
+          ]);
+        } else {
+          setError(error);
+        }
+      });
+    } else {
+      setError(error);
+    }
+  }, [error, offset]);
+
   useEffect(() => {
     fetchPokemons();
-  }, []);
-
-  async function fetchPokemons() {
-    const apiResponse = await getAllPokemons();
-    if (!isEmpty(apiResponse)) {
-      setResponse(apiResponse.data);
-      const pokemonArray = apiResponse.data.results;
-      pokemonArray.forEach((pokemonInfo) =>
-        handlePokemonByName(pokemonInfo.name)
-      );
-    } else {
-      setError(error);
-    }
-  }
-
-  async function handlePokemonByName(name) {
-    const apiResponse = await fetchPokemonsByName(name);
-    if (!isEmpty(apiResponse)) {
-      setIndividualData((individualData) => [
-        ...individualData,
-        apiResponse.data,
-      ]);
-    } else {
-      setError(error);
-    }
-  }
+  }, [fetchPokemons]);
 
   useEffect(() => {
     if (!isEmpty(individualData)) {
       setLoading(false);
+      setError(false);
     }
   }, [individualData]);
 
   return (
     <Container>
-      <Grid gutter={24}>
-        {loading && <h2> Loading... </h2>}
+      {loading && <h2> Loading... </h2>}
+      {error && <h2>Something went wrong</h2>}
+      {!loading && !error && (
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={() => fetchPokemons(limit, offset + limit)}
+          hasMore={true || false}
+          loader={
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          }
+        >
+          <Grid gutter={24}>
+            {individualData.map((pokeData, index) => {
+              const { sprites, species, types } = pokeData;
+              const pokemonType = types[0].type.name;
+              const pokemonName = species.name;
+              const imageSource = sprites.front_default;
+              const bgColor = getPokeCardColorByType(pokemonType);
 
-        {!loading & !error &&
-          individualData.map((pokeData, index) => {
-            console.log("handlingsssss");
-            const { stats, sprites, species, types } = pokeData;
-            const pokemonType = types[0].type.name;
-            const pokemonName = species.name;
-            const imageSource = sprites.front_default;
-            return (
-              <StyledCol span={6}>
-                <PokeCard
-                  key={index}
-                  id={index + 1}
-                  src={imageSource}
-                  name={pokemonName}
-                  type={pokemonType}
-                  backgroundColor={"red"}
-                />
-              </StyledCol>
-            );
-          })}
-
-        {error && <h2>Something went wrong</h2>}
-      </Grid>
+              return (
+                <StyledCol key={index} span={6}>
+                  <PokeCard
+                    id={index + 1}
+                    src={imageSource}
+                    name={pokemonName}
+                    type={pokemonType}
+                    backgroundColor={bgColor}
+                  />
+                </StyledCol>
+              );
+            })}
+          </Grid>
+        </InfiniteScroll>
+      )}
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import "antd/dist/antd.css";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Card } from "antd";
+
 import { colors } from "utils/themes/colors";
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
 

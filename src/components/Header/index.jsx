@@ -42,6 +42,7 @@ const StyledText = styled.span`
 `;
 
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
+  // TODO: ADD lazy loading
   <StyledHeader className="wrapper">
     <StyledSubHeader>
       <StyledLogo src={pokelogo} alt="pokelogo" />

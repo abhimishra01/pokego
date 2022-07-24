@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { colors } from "utils/colors";
+import { colors } from "utils/themes/colors";
 
 const Container = styled.div`
   width: 100%;
-  background-color: ${colors.primaryOrange};
-  color: ${colors.primaryOrange};
+  background-color: ${colors.primaryRed};
+  color: ${colors.primaryRed};
   position: relative;
 `;
 
@@ -14,8 +14,8 @@ const StyledSpan = styled.span`
   height: auto;
   left: 0;
   min-height: 100% !important;
-  background-color: ${colors.primaryRed};
-  color: ${colors.primaryRed};
+  background-color: ${colors.secondaryRed};
+  color: ${colors.secondaryRed};
   width: ${(props) => props.width};
 `;
 

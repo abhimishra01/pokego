@@ -6,21 +6,52 @@ import { Card } from "antd";
 import { colors } from "utils/themes/colors";
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
 
+const HoverCard = styled.div`
+  position: absolute;
+  background-color: brown;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  transition: 0.4s ease-in-out;
+  transform: translateY(100%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1rem;
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: 0.31rem 0.31rem 0.5rem ${colors.boxShadow};
+  &:hover {
+    box-shadow: 0.5rem 0.5rem 0.6rem ${colors.primaryGray};
+  }
+  &:hover ${HoverCard} {
+    transform: translateY(0%);
+  }
+`;
+
 const StyledCard = styled(Card)`
   && {
-    border-radius: 1rem;
-    background-color: ${(props) => props.bgcolor};
-    box-shadow: 0.31rem 0.31rem 0.5rem ${colors.boxShadow};
     &.ant-card .ant-card-body {
+      background-color: ${(props) => props.bgcolor};
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem;
-      width: 100% !important;
+      width: 100%;
     }
   }
 `;
-// TODO: add box shadow
 
 const StyledImg = styled.img`
   min-width: 20%;
@@ -50,12 +81,21 @@ const StyledId = styled.p`
 
 export const PokeCard = ({ name, type, id, backgroundColor, src }) => {
   return (
-    <StyledCard bgcolor={backgroundColor}>
-      <StyledImg src={src} />
-      <StyledId>#{id}</StyledId>
-      <StyledText>{name}</StyledText>
-      <StyledText>{type}</StyledText>
-    </StyledCard>
+    <Container>
+      <StyledCard bgcolor={backgroundColor}>
+        <StyledImg src={src} />
+        <StyledId>#{id}</StyledId>
+        <StyledText>{name}</StyledText>
+        <StyledText>{type}</StyledText>
+      </StyledCard>
+      <HoverCard>
+        <StyledText>{type}</StyledText>
+        <StyledText>{type}</StyledText>
+        <StyledText>{type}</StyledText>
+        <StyledText>{type}</StyledText>
+        <StyledText>{type}</StyledText>
+      </HoverCard>
+    </Container>
   );
 };
 

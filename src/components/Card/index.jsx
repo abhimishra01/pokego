@@ -18,6 +18,7 @@ const StyledCard = styled(Card)`
     }
   }
 `;
+// TODO: add box shadow
 
 const StyledImg = styled.img`
   min-width: 20%;

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { colors } from "utils/colors";
 
 const Container = styled.div`
   width: 100%;
-  background-color: #f19686;
-  color: #f19686;
+  background-color: ${colors.primaryOrange};
+  color: ${colors.primaryOrange};
   position: relative;
 `;
 
@@ -13,8 +14,8 @@ const StyledSpan = styled.span`
   height: auto;
   left: 0;
   min-height: 100% !important;
-  background-color: #d14d36;
-  color: #d14d36;
+  background-color: ${colors.primaryRed};
+  color: ${colors.primaryRed};
   width: ${(props) => props.width};
 `;
 
@@ -28,7 +29,6 @@ export const Slider = ({ width }) => {
 };
 
 Slider.propTypes = {
-  backgroundColor: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 

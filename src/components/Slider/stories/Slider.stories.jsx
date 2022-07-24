@@ -16,5 +16,5 @@ Stats1.args = {
 
 export const Stats2 = Template.bind({});
 Stats2.args = {
-  width: 100, // px
+  width: "10rem", // px
 };

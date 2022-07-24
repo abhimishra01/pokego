@@ -9,10 +9,11 @@ export const colors = {
   // colors based on pokemon types
   electric: "#ECC948",
   water: "#1694F0",
-  grass: "#51A548",
+  grass: "#7EB898",
   fire: "#DF2620",
   rock: "#24241b",
   skin: "#E4D6BE",
   ghost: "#624B82",
+  normal: "#393E42",
   other: "#705848", // for other pokemon types as per api response
 };

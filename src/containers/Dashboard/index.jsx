@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { isEmpty } from "lodash";
+import { isEmpty, capitalize } from "lodash";
 import styled from "styled-components";
 import { Col, Row } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
@@ -86,9 +86,9 @@ export const Dashboard = () => {
             {individualData.map((pokeData, index) => {
               const { sprites, species, types } = pokeData;
               const pokemonType = types[0].type.name;
-              const pokemonName = species.name;
+              const pokemonName = capitalize(species.name);
               const imageSource = sprites.front_default;
-              const bgColor = getPokeCardColorByType(pokemonType);
+              const bgColor = capitalize(getPokeCardColorByType(pokemonType));
 
               return (
                 <StyledCol key={index} span={6}>
@@ -96,7 +96,7 @@ export const Dashboard = () => {
                     id={index + 1}
                     src={imageSource}
                     name={pokemonName}
-                    type={pokemonType}
+                    type={capitalize(pokemonType)}
                     backgroundColor={bgColor}
                   />
                 </StyledCol>

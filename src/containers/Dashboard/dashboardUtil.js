@@ -10,7 +10,7 @@ export const getPokeCardColorByType = (type) => {
     case GRASS:
       return colors.grass;
     case WATER:
-      return colors.electric;
+      return colors.water;
     case FIRE:
       return colors.fire;
     case NORMAL:

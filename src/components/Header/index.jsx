@@ -1,58 +1,92 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import { Button } from "../Button";
-import "./header.css";
+
+import pokelogo from "../../images/pokelogo.png";
+
+const StyledHeader = styled.header`
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 8rem;
+`;
+
+const StyledLogo = styled.img`
+  height: 18rem;
+`;
+
+const StyledSubHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const AvatarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ButtonContainer = styled.div`
+  margin-left: 0.5rem;
+`;
+
+const StyledText = styled.span`
+  font-size: 1.5em;
+`;
 
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
-  <header>
-    <div className="wrapper">
-      <div>
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g fill="none" fillRule="evenodd">
-            <path
-              d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z"
-              fill="#FFF"
+  <StyledHeader className="wrapper">
+    <StyledSubHeader>
+      <StyledLogo src={pokelogo} alt="pokelogo" />
+    </StyledSubHeader>
+    <div>
+      {user ? (
+        <AvatarContainer>
+          <StyledText className="welcome">
+            Welcome, <b>{user.name}</b>!
+          </StyledText>
+          <ButtonContainer>
+            <Button
+              size="small"
+              shape="round"
+              onClick={onLogout}
+              label="Log out"
+              border="0.02rem solid #001"
             />
-            <path
-              d="M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z"
-              fill="#555AB9"
+          </ButtonContainer>
+        </AvatarContainer>
+      ) : (
+        <AvatarContainer>
+          <ButtonContainer>
+            <Button
+              size="small"
+              shape="round"
+              onClick={onLogin}
+              label="Log in"
+              border="0.02rem solid #001"
             />
-            <path
-              d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
-              fill="#91BAF8"
-            />
-          </g>
-        </svg>
-        <h1>Acme</h1>
-      </div>
-      <div>
-        {user ? (
-          <>
-            <span className="welcome">
-              Welcome, <b>{user.name}</b>!
-            </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
-          </>
-        ) : (
-          <>
-            <Button size="small" onClick={onLogin} label="Log in" />
+          </ButtonContainer>
+          <ButtonContainer>
             <Button
               primary
               size="small"
+              shape="round"
               onClick={onCreateAccount}
               label="Sign up"
+              border="0.02rem solid #001"
             />
-          </>
-        )}
-      </div>
+          </ButtonContainer>
+        </AvatarContainer>
+      )}
     </div>
-  </header>
+  </StyledHeader>
 );
 
 Header.propTypes = {

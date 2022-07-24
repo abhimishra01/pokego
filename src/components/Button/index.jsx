@@ -1,54 +1,68 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./button.css";
+import styled from "styled-components";
+import "antd/dist/antd.css";
+import { Button as AntdButton } from "antd";
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+const StyledButton = styled(AntdButton)`
+  && {
+    background-color: ${(props) => props.backgroundColor};
+    color: ${(props) => props.labelColor};
+    border: ${(props) => props.border};
+  }
+`;
+
+export const Button = ({
+  loading,
+  size,
+  label,
+  disabled,
+  htmlType,
+  type,
+  shape,
+  backgroundColor,
+  labelColor,
+  border,
+}) => {
   return (
-    <button
-      type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
-      style={backgroundColor && { backgroundColor }}
-      {...props}
+    <StyledButton
+      type={type}
+      size={size}
+      htmlType={htmlType}
+      disabled={disabled}
+      loading={loading}
+      shape={shape}
+      backgroundColor={backgroundColor}
+      labelColor={labelColor}
+      border={border}
     >
       {label}
-    </button>
+    </StyledButton>
   );
 };
 
 Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
   backgroundColor: PropTypes.string,
-  /**
-   * How large should the button be?
-   */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
-  /**
-   * Button contents
-   */
+  labelColor: PropTypes.string,
+  htmlType: PropTypes.string,
   label: PropTypes.string.isRequired,
-  /**
-   * Optional click handler
-   */
+  border: PropTypes.string,
+  type: PropTypes.oneOf([
+    "primary",
+    "ghost",
+    "dashed",
+    "link",
+    "text",
+    "default",
+  ]),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  shape: PropTypes.oneOf(["circle", "round", "default"]),
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 Button.defaultProps = {
   backgroundColor: null,
-  primary: false,
-  size: "medium",
-  onClick: undefined,
+  onClick: () => console.log("clicked"),
 };

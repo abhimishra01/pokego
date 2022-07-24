@@ -11,3 +11,12 @@ Visit the site and find out amazing and new informations about various Pokemons
 - Ant Design
 - Styled Components
 - [PokeApi](https://pokeapi.co/)
+
+
+
+## TODO:-
+
+[] Lazy Loading
+[] State Management
+[] Bookmarks
+[] Authentication

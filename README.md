@@ -16,6 +16,7 @@ Visit the site and find out amazing and new informations about various Pokemons
 
 ## TODO:-
 
+- [ ] Card Hover Merchanism
 - [ ] Lazy Loading
 - [ ] State Management
 - [ ] Bookmarks

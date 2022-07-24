@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Button as AntdButton } from "antd";
 
 const StyledButton = styled(AntdButton)`
   && {
-    background-color: ${(props) => props.backgroundColor};
-    color: ${(props) => props.labelColor};
+    background-color: ${(props) => props.bg};
+    color: ${(props) => props.labelcolor};
     border: ${(props) => props.border};
   }
 `;
@@ -32,8 +32,8 @@ export const Button = ({
       disabled={disabled}
       loading={loading}
       shape={shape}
-      backgroundColor={backgroundColor}
-      labelColor={labelColor}
+      bgcolor={backgroundColor}
+      labelcolor={labelColor}
       border={border}
     >
       {label}

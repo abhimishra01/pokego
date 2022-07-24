@@ -4,6 +4,8 @@ export const POKEMON_TYPES = {
   WATER: "water",
   FIRE: "fire",
   NORMAL: "normal",
+  ROCK: "rock",
+  GHOST: "ghost",
 };
 
 export const SAMPLE_POKEMON_URL =

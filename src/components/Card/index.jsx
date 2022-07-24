@@ -8,7 +8,7 @@ import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
 const StyledCard = styled(Card)`
   && {
     border-radius: 1rem;
-    background-color: ${(props) => props.backgroundColor};
+    background-color: ${(props) => props.bgcolor};
     &.ant-card .ant-card-body {
       display: flex;
       flex-direction: column;
@@ -48,7 +48,7 @@ const StyledId = styled.p`
 
 export const PokeCard = ({ name, type, id, backgroundColor, src }) => {
   return (
-    <StyledCard backgroundColor={backgroundColor}>
+    <StyledCard bgcolor={backgroundColor}>
       <StyledImg src={src} />
       <StyledId>#{id}</StyledId>
       <StyledText>{name}</StyledText>
@@ -67,7 +67,7 @@ PokeCard.propTypes = {
 PokeCard.defaultProps = {
   id: 1,
   src: SAMPLE_POKEMON_URL,
-  name: SAMPLE_POKEMON_URL,
+  name: "Bulbasaur",
   type: POKEMON_TYPES.GRASS,
   backgroundColor: colors.primaryGray,
 };

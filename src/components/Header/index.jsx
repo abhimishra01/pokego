@@ -1,18 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import "antd/dist/antd.min.css";
 
-import { Button } from "../Button";
-import pokelogo from "../../images/pokelogo.png";
+import { colors } from "utils/themes/colors";
+import { Button } from "components/Button";
+import pokelogo from "images/pokelogo.png";
 
 const StyledHeader = styled.header`
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid ${colors.primaryGray};
+  background-color: ${colors.secondaryGray};
+  color: ${colors.primaryWhite};
   padding: 0.5rem 1.2rem;
+  max-height: 8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-height: 8rem;
 `;
 
 const StyledLogo = styled.img`
@@ -90,12 +94,10 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
 );
 
 Header.propTypes = {
-  user: PropTypes.shape({}),
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  onCreateAccount: PropTypes.func.isRequired,
-};
-
-Header.defaultProps = {
-  user: null,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  onLogin: PropTypes.func,
+  onLogout: PropTypes.func,
+  onCreateAccount: PropTypes.func,
 };

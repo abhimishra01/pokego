@@ -6,7 +6,7 @@ import { capitalize, isEmpty } from "lodash";
 
 import { colors } from "utils/themes/colors";
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
-import { PokeStat } from "components/PokeStat";
+import PokeStat from "components/PokeStat";
 
 const HoverCard = styled.div`
   position: absolute;

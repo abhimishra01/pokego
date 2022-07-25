@@ -1,13 +1,34 @@
 import { useState, useEffect, useCallback } from "react";
 import { isEmpty, capitalize } from "lodash";
 import styled from "styled-components";
-import { Col, Row } from "antd";
+import { Col, Row, Spin } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
 
 import { PokeCard } from "components/Card";
 import { getAllPokemons, fetchPokemonsByName } from "services/pokeApi";
+import { colors } from "utils/themes/colors";
 
 import { getPokeCardColorByType } from "./dashboardUtil";
+
+const Container = styled.div`
+  padding: 4rem;
+  min-height: 100vh;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    ${colors.secondaryLime},
+    ${colors.primaryLime},
+    ${colors.paperColor},
+    ${colors.primaryPink},
+    ${colors.secondaryPink}
+  );
+`;
+
+const Loading = styled.div`
+  display: grid;
+  place-items: center;
+  color: ${colors.secondaryGray};
+`;
 
 const Grid = styled(Row)`
   && {
@@ -17,10 +38,6 @@ const Grid = styled(Row)`
   }
 `;
 
-const Container = styled.div`
-  padding: 4rem;
-`;
-
 const StyledCol = styled(Col)`
   && {
     margin-top: 1rem;
@@ -28,68 +45,69 @@ const StyledCol = styled(Col)`
 `;
 
 export const Dashboard = () => {
-  const [individualData, setIndividualData] = useState([]);
-  //   const [response, setResponse] = useState({});
-  //   const [nextApiUrl, setNextApiUrl] = useState("");
   let offset = 0;
   const limit = 20;
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [pokeDataSet, setPokeDataSet] = useState([]);
 
-  const fetchPokemons = useCallback(async () => {
-    const apiResponse = await getAllPokemons(limit, offset);
-    if (!isEmpty(apiResponse)) {
-      const pokemonArray = apiResponse.data.results;
-      pokemonArray.forEach(async (pokemonInfo) => {
-        const response = await fetchPokemonsByName(pokemonInfo.name);
-        if (!isEmpty(response)) {
-          setIndividualData((individualData) => [
-            ...individualData,
-            response.data,
-          ]);
-        } else {
-          setError(error);
-        }
-      });
-    } else {
-      setError(error);
-    }
-  }, [error, offset]);
+  const fetchPokemons = useCallback(
+    async (limt = limit, off = offset) => {
+      const apiResponse = await getAllPokemons(limt, off);
+      if (!isEmpty(apiResponse)) {
+        const pokemonArray = apiResponse.data.results;
+        pokemonArray.forEach(async (pokemonInfo) => {
+          const response = await fetchPokemonsByName(pokemonInfo.name);
+          if (!isEmpty(response)) {
+            setPokeDataSet((pokeDataSet) => [...pokeDataSet, response.data]);
+          } else {
+            setError(error);
+          }
+        });
+      } else {
+        setError(error);
+      }
+    },
+    [error, offset]
+  );
 
   useEffect(() => {
     fetchPokemons();
   }, [fetchPokemons]);
 
   useEffect(() => {
-    if (!isEmpty(individualData)) {
+    if (!isEmpty(pokeDataSet)) {
       setLoading(false);
       setError(false);
     }
-  }, [individualData]);
+  }, [pokeDataSet]);
 
   return (
     <Container>
-      {loading && <h2> Loading... </h2>}
+      {loading && (
+        <Loading>
+          <Spin size={"large"} />
+        </Loading>
+      )}
       {error && <h2>Something went wrong</h2>}
       {!loading && !error && (
         <InfiniteScroll
           pageStart={0}
-          loadMore={() => fetchPokemons(limit, offset + limit)}
-          hasMore={true || false}
+          loadMore={() => fetchPokemons(limit, pokeDataSet.length)}
+          hasMore={true}
           loader={
-            <div className="loader" key={0}>
-              Loading ...
-            </div>
+            <Loading key={1}>
+              <Spin size={"large"} />
+            </Loading>
           }
         >
           <Grid gutter={24}>
-            {individualData.map((pokeData, index) => {
-              const { sprites, species, types } = pokeData;
+            {pokeDataSet.map((pokeData, index) => {
+              const { stats, sprites, species, types } = pokeData;
               const pokemonType = types[0].type.name;
               const pokemonName = capitalize(species.name);
               const imageSource = sprites.front_default;
               const bgColor = capitalize(getPokeCardColorByType(pokemonType));
-
               return (
                 <StyledCol key={index} span={6}>
                   <PokeCard
@@ -98,6 +116,7 @@ export const Dashboard = () => {
                     name={pokemonName}
                     type={capitalize(pokemonType)}
                     backgroundColor={bgColor}
+                    stats={stats}
                   />
                 </StyledCol>
               );

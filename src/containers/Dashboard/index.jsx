@@ -52,8 +52,8 @@ export const Dashboard = () => {
   const [pokeDataSet, setPokeDataSet] = useState([]);
 
   const fetchPokemons = useCallback(
-    async (limit, offset) => {
-      const apiResponse = await getAllPokemons(limit, offset);
+    async (limt = limit, off = offset) => {
+      const apiResponse = await getAllPokemons(limt, off);
       if (!isEmpty(apiResponse)) {
         const pokemonArray = apiResponse.data.results;
         pokemonArray.forEach(async (pokemonInfo) => {
@@ -72,7 +72,7 @@ export const Dashboard = () => {
   );
 
   useEffect(() => {
-    fetchPokemons(limit, offset);
+    fetchPokemons();
   }, [fetchPokemons]);
 
   useEffect(() => {

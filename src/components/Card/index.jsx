@@ -102,11 +102,17 @@ export const PokeCard = ({ name, type, id, backgroundColor, src, stats }) => {
       <HoverCard>
         {!isEmpty(stats) ? (
           stats.map((data, index) => {
+            let level;
             const statName = capitalize(data.stat.name);
-            const level = data.base_stat;
+            if (data.base_stat > 100) {
+              level = 100;
+            } else {
+              level = data.base_stat;
+            }
+
             return (
-              <StatContainer>
-                <PokeStat key={index} level={level} statName={statName} />
+              <StatContainer key={index}>
+                <PokeStat level={level} statName={statName} />
               </StatContainer>
             );
           })

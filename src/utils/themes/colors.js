@@ -17,4 +17,10 @@ export const colors = {
   ghost: "#624B82",
   normal: "#557c7d",
   other: "#705848", // for other pokemon types as per api response
+  // background linear-gradient colors
+  secondaryLime: "#cafebf",
+  primaryLime: "#d7e9be",
+  paperColor: "#E1D8BD",
+  primaryPink: "#f1c4bd",
+  secondaryPink: " #fdb1bd",
 };

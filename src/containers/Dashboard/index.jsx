@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Col, Row, Spin } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
 
-import { PokeCard } from "components/Card";
+import PokeCard from "components/PokeCard";
 import { getAllPokemons, fetchPokemonsByName } from "services/pokeApi";
 import { colors } from "utils/themes/colors";
 

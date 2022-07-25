@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 100%;
 `;
 
-function App() {
+export default function App() {
   return (
     <Container>
       <Header />
@@ -16,5 +16,3 @@ function App() {
     </Container>
   );
 }
-
-export default App;

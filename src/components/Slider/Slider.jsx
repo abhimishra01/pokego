@@ -22,14 +22,14 @@ const StyledSpan = styled.span`
   width: ${(props) => props.width}%;
 `;
 
-export const Slider = ({ width }) => {
+export default function Slider({ width }) {
   return (
     <Container>
       Stats Level
       <StyledSpan width={width}></StyledSpan>
     </Container>
   );
-};
+}
 
 Slider.propTypes = {
   width: PropTypes.oneOf(SLIDER_RANGE_ARRAY.map((_, i) => i + 1)).isRequired,

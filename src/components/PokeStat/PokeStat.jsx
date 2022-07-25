@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { colors } from "utils/themes/colors";
-import { Slider } from "components/Slider";
+import Slider from "components/Slider";
 import { SLIDER_RANGE_ARRAY } from "utils/constants";
 
 const Container = styled.div`

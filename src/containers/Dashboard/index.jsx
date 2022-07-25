@@ -84,12 +84,11 @@ export const Dashboard = () => {
         >
           <Grid gutter={24}>
             {individualData.map((pokeData, index) => {
-              const { sprites, species, types } = pokeData;
+              const { stats, sprites, species, types } = pokeData;
               const pokemonType = types[0].type.name;
               const pokemonName = capitalize(species.name);
               const imageSource = sprites.front_default;
               const bgColor = capitalize(getPokeCardColorByType(pokemonType));
-
               return (
                 <StyledCol key={index} span={6}>
                   <PokeCard
@@ -98,6 +97,7 @@ export const Dashboard = () => {
                     name={pokemonName}
                     type={capitalize(pokemonType)}
                     backgroundColor={bgColor}
+                    stats={stats}
                   />
                 </StyledCol>
               );

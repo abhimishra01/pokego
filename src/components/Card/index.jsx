@@ -2,13 +2,15 @@ import "antd/dist/antd.css";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Card } from "antd";
+import { capitalize, isEmpty } from "lodash";
 
 import { colors } from "utils/themes/colors";
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
+import { PokeStat } from "components/PokeStat";
 
 const HoverCard = styled.div`
   position: absolute;
-  background-color: brown;
+  background-color: ${colors.secondaryGray};
   position: absolute;
   bottom: 0;
   left: 0;
@@ -21,6 +23,10 @@ const HoverCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Container = styled.div`
@@ -79,7 +85,12 @@ const StyledId = styled.p`
   background-color: ${colors.primaryGray};
 `;
 
-export const PokeCard = ({ name, type, id, backgroundColor, src }) => {
+const StatContainer = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+`;
+
+export const PokeCard = ({ name, type, id, backgroundColor, src, stats }) => {
   return (
     <Container>
       <StyledCard bgcolor={backgroundColor}>
@@ -89,11 +100,19 @@ export const PokeCard = ({ name, type, id, backgroundColor, src }) => {
         <StyledText>{type}</StyledText>
       </StyledCard>
       <HoverCard>
-        <StyledText>{type}</StyledText>
-        <StyledText>{type}</StyledText>
-        <StyledText>{type}</StyledText>
-        <StyledText>{type}</StyledText>
-        <StyledText>{type}</StyledText>
+        {!isEmpty(stats) ? (
+          stats.map((data, index) => {
+            const statName = capitalize(data.stat.name);
+            const level = data.base_stat;
+            return (
+              <StatContainer>
+                <PokeStat key={index} level={level} statName={statName} />
+              </StatContainer>
+            );
+          })
+        ) : (
+          <StyledText>No Stats found...</StyledText>
+        )}
       </HoverCard>
     </Container>
   );

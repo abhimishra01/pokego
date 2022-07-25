@@ -3,7 +3,7 @@ import React from "react";
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
 import { colors } from "utils/themes/colors";
 
-import { PokeCard } from "../index";
+import PokeCard from "../PokeCard";
 
 export default {
   title: "Example/Card",

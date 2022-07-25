@@ -15,6 +15,7 @@ Visit the site and find out amazing and new informations about various Pokemons
 
 
 
--- Pending Tasks :-
+-- 
+#### Pending Tasks :-
 - User Authentication
 - Bookmarks / Save feature for users

@@ -12,3 +12,9 @@ Visit the site and find out amazing and new informations about various Pokemons
 - Styled Components
 - [PokeApi](https://pokeapi.co/)
 - [API Sauce ](https://github.com/infinitered/apisauce)
+
+
+
+-- Pending Tasks :-
+- User Authentication
+- Bookmarks / Save feature for users

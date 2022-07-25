@@ -1,7 +1,8 @@
 import { POKEMON_TYPES } from "utils/constants";
 import { colors } from "utils/themes/colors";
 
-const { ELECTRIC, GRASS, WATER, FIRE, NORMAL, ROCK, GHOST } = POKEMON_TYPES;
+const { ELECTRIC, GRASS, WATER, FIRE, NORMAL, ROCK, GHOST, BUG } =
+  POKEMON_TYPES;
 
 export const getPokeCardColorByType = (type) => {
   switch (type) {
@@ -19,6 +20,8 @@ export const getPokeCardColorByType = (type) => {
       return colors.rock;
     case GHOST:
       return colors.ghost;
+    case BUG:
+      return colors.bug;
     default:
       return colors.other;
   }

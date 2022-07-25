@@ -62,10 +62,10 @@ const StyledCard = styled(Card)`
 const StyledImg = styled.img`
   min-width: 20%;
   max-width: 40%;
-  max-height: 30%;
   border: 0.5px solid ${colors.primaryWhite};
   border-radius: 50%;
   background-color: ${colors.skin};
+  object-fit: contain;
 `;
 
 const StyledText = styled.p`

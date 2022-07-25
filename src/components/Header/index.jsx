@@ -17,6 +17,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0.5rem 0.5rem 0.6rem ${colors.primaryGray};
 `;
 
 const StyledLogo = styled.img`

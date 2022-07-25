@@ -13,10 +13,15 @@ Visit the site and find out amazing and new informations about various Pokemons
 - [PokeApi](https://pokeapi.co/)
 - [API Sauce ](https://github.com/infinitered/apisauce)
 
+#### 🚀 Features of the App
 
+- Code Splitting and Lazy Loading
+- Infinite Scroll
+- Card Hover Mechanism
 
 ---
 
 #### Pending Tasks :-
+
 - User Authentication
 - Bookmarks / Save feature for users

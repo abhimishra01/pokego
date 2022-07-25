@@ -9,16 +9,27 @@ import { getAllPokemons, fetchPokemonsByName } from "services/pokeApi";
 
 import { getPokeCardColorByType } from "./dashboardUtil";
 
+const Container = styled.div`
+  padding: 4rem;
+  background-color: red;
+  background-image: linear-gradient(to right #c9fdbf, red, #fdafbd);
+  background-color: red;
+  background-image: linear-gradient(
+    to right,
+    #cafebf,
+    #d7e9be,
+    #e3d7be,
+    #f1c4bd,
+    #fdb1bd
+  );
+`;
+
 const Grid = styled(Row)`
   && {
     &.ant-row {
       margin: 3rem auto;
     }
   }
-`;
-
-const Container = styled.div`
-  padding: 4rem;
 `;
 
 const StyledCol = styled(Col)`

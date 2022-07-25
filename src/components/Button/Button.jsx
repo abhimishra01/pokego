@@ -12,7 +12,7 @@ const StyledButton = styled(AntdButton)`
   }
 `;
 
-export const Button = ({
+export default function Button({
   loading,
   size,
   label,
@@ -23,7 +23,7 @@ export const Button = ({
   backgroundColor,
   labelColor,
   border,
-}) => {
+}) {
   return (
     <StyledButton
       type={type}
@@ -39,7 +39,7 @@ export const Button = ({
       {label}
     </StyledButton>
   );
-};
+}
 
 Button.propTypes = {
   backgroundColor: PropTypes.string,

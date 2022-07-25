@@ -6,6 +6,7 @@ export const POKEMON_TYPES = {
   NORMAL: "normal",
   ROCK: "rock",
   GHOST: "ghost",
+  BUG: "bug",
 };
 
 export const SAMPLE_POKEMON_URL =

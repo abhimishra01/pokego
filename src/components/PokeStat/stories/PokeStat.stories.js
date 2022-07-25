@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PokeStat } from "../index";
+import PokeStat from "../index";
 
 export default {
   title: "Example/Stat",

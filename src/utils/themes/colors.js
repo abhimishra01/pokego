@@ -16,6 +16,7 @@ export const colors = {
   skin: "#E4D6BE",
   ghost: "#624B82",
   normal: "#557c7d",
+  bug: "#74926A",
   other: "#705848", // for other pokemon types as per api response
   // background linear-gradient colors
   secondaryLime: "#cafebf",

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { colors } from "utils/themes/colors";
-import { Slider } from "components/Slider";
+import Slider from "components/Slider";
 import { SLIDER_RANGE_ARRAY } from "utils/constants";
 
 const Container = styled.div`
@@ -23,7 +23,7 @@ const SliderContainer = styled.div`
   width: inherit;
 `;
 
-export const PokeStat = ({ statName, level }) => {
+export default function PokeStat({ statName, level }) {
   return (
     <Container>
       <StyledText>{statName}</StyledText>
@@ -33,7 +33,7 @@ export const PokeStat = ({ statName, level }) => {
       <StyledText>{level}</StyledText>
     </Container>
   );
-};
+}
 
 PokeStat.propTypes = {
   statName: PropTypes.string.isRequired,

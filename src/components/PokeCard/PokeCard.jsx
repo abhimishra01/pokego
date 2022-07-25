@@ -6,7 +6,7 @@ import { capitalize, isEmpty } from "lodash";
 
 import { colors } from "utils/themes/colors";
 import { POKEMON_TYPES, SAMPLE_POKEMON_URL } from "utils/constants";
-import { PokeStat } from "components/PokeStat";
+import PokeStat from "components/PokeStat";
 
 const HoverCard = styled.div`
   position: absolute;
@@ -90,7 +90,14 @@ const StatContainer = styled.div`
   width: 100%;
 `;
 
-export const PokeCard = ({ name, type, id, backgroundColor, src, stats }) => {
+export default function PokeCard({
+  name,
+  type,
+  id,
+  backgroundColor,
+  src,
+  stats,
+}) {
   return (
     <Container>
       <StyledCard bgcolor={backgroundColor}>
@@ -122,7 +129,7 @@ export const PokeCard = ({ name, type, id, backgroundColor, src, stats }) => {
       </HoverCard>
     </Container>
   );
-};
+}
 
 PokeCard.propTypes = {
   backgroundColor: PropTypes.string,
